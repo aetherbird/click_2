@@ -31,3 +31,10 @@ func consume_compost(quantity : int) -> Error:
 	Game.ref.data.compost -= quantity
 	compost_consumed.emit(quantity)
 	return Error.OK
+
+## Triggered by the clicker; harvests compost
+func triggered_clicker() -> void:
+	var quantity : int = 1
+	quantity += Game.ref.data.up_01_level
+	## Use the function w/ quantity
+	harvest_compost(quantity)

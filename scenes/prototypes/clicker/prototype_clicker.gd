@@ -14,7 +14,7 @@ func _ready() -> void:
 
 ## Harvest 1 compost.
 func harvest_compost() -> void:
-	HandlerCompost.ref.harvest_compost(1)
+	HandlerCompost.ref.triggered_clicker()
 
 ## Triggered when haravest compost button is pressed
 func _on_button_pressed() -> void:
