@@ -1,20 +1,16 @@
 class_name PrototypeGenerator
-extends Control
+extends View
 ## Generator prototype creating stardust every seconds
 
 ## Reference to button to start harvesting
 @export var button : Button
 ## Referenct to timer
 @export var timer : Timer
-## Reference to the user interface
-@export var user_interface : UserInterface
-## Setup view for signals, view reference
-@export var view : UserInterface.Views
 
 ## Initialize the label
 func _ready():
+	super()
 	visible = true
-	user_interface.navigation_requested.connect(_on_navigation_request)
 
 ## Harvest compost and store it.
 func harvest_compost() -> void:
@@ -32,13 +28,3 @@ func _on_button_pressed() -> void:
 ## Triggered when the timer times out.
 func _on_timer_timeout():
 	harvest_compost()
-	
-func _on_user_interface_navigation_requested(view):
-	pass # Replace with function body.
-
-## Watch for navigation requests and react accordingly
-func _on_navigation_request(requested_view : UserInterface.Views ) -> void:
-	if requested_view == view:
-		visible = true
-		return
-	visible = false

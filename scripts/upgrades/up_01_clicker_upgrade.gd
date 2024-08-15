@@ -1,22 +1,12 @@
 class_name Up01ClickerUpgrade
-extends Node
+extends Upgrade
 ## Upgrade 01 - Increases compost harvested by the clicker.
-
-## Emitted when the upgrade has leveled up
-signal leveled_up
-
-## Level of the upgrade
-var level : int
-## Title/name of upgrade
-var title : String = "Clicker Upgrade"
-## Base cost of the upgrade
-var base_cost : int = 5
-## Current cost of upgrade: cost variable
-var cost : int
 
 ## Load data
 func _init() -> void:
 	level = Game.ref.data.up_01_level
+	title = "Clicker Upgrade"
+	base_cost = 5
 	calculate_cost()
 
 ## Returns the description containing effects and cost.
