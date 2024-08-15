@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://df7eg4jas67df"]
+[gd_scene load_steps=4 format=3 uid="uid://df7eg4jas67df"]
 
 [ext_resource type="FontFile" uid="uid://cugu6qo8thvbm" path="res://assets/JetBrainsMono-Regular.ttf" id="1_p2m3i"]
 [ext_resource type="Script" path="res://scenes/prototypes/generator/prototype_generator.gd" id="1_v4s1n"]
+[ext_resource type="Script" path="res://scenes/user_interface/compost_label.gd" id="3_q5a4e"]
 
-[node name="PrototypeGenerator" type="Control" node_paths=PackedStringArray("label", "button", "timer")]
+[node name="PrototypeGenerator" type="Control" node_paths=PackedStringArray("button", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v4s1n")
-label = NodePath("Label")
 button = NodePath("Button")
 timer = NodePath("Timer")
 
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.00224487, 1.35368e-08, 0.0731909, 1)
+color = Color(0.0620342, 0.0302868, 0.0206552, 1)
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(320, 80)
@@ -54,6 +54,7 @@ theme_override_fonts/font = ExtResource("1_p2m3i")
 text = "Compost : < no_value >"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_q5a4e")
 
 [node name="Timer" type="Timer" parent="."]
 
