@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq31d1i3jp7ba"]
+[gd_scene load_steps=6 format=3 uid="uid://dq31d1i3jp7ba"]
 
+[ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_ucgee"]
 [ext_resource type="FontFile" uid="uid://cugu6qo8thvbm" path="res://assets/JetBrainsMono-Regular.ttf" id="1_w7wv1"]
 [ext_resource type="PackedScene" uid="uid://df7eg4jas67df" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="2_gqbhg"]
+[ext_resource type="Script" path="res://scenes/user_interface/compost_label.gd" id="3_27xrx"]
+[ext_resource type="PackedScene" uid="uid://0hvelafh274l" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="4_3wx4e"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -10,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ucgee")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 texture_repeat = 2
@@ -57,10 +61,15 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+[node name="PrototypeGeneratorLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_w7wv1")
 text = "Prototype Generator"
+
+[node name="PrototypeClickerLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_w7wv1")
+text = "Prototype Clicker"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
@@ -89,10 +98,11 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+[node name="CompostLabel" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_w7wv1")
 text = "Compost : 14"
+script = ExtResource("3_27xrx")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -106,5 +116,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PrototypeGenerator" parent="HBoxContainer/MainView" instance=ExtResource("2_gqbhg")]
+[node name="PrototypeGenerator" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("2_gqbhg")]
 layout_mode = 1
+user_interface = NodePath("../../..")
+
+[node name="PrototypeClicker" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("4_3wx4e")]
+visible = false
+layout_mode = 1
+user_interface = NodePath("../../..")
+view = 1
+
+[connection signal="navigation_requested" from="." to="HBoxContainer/MainView/PrototypeGenerator" method="_on_user_interface_navigation_requested"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]

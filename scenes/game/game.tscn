@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7jv21j2oup2y"]
+
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_v12nb"]
+[ext_resource type="PackedScene" uid="uid://dq31d1i3jp7ba" path="res://scenes/user_interface/user_interface.tscn" id="2_41l3w"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_compost.gd" id="2_v7fbt"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_v12nb")
+
+[node name="Handlers" type="Node" parent="."]
+
+[node name="Compost" type="Node" parent="Handlers"]
+script = ExtResource("2_v7fbt")
+
+[node name="UserInterface" parent="." instance=ExtResource("2_41l3w")]

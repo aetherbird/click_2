@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Clicker_2"
-run/main_scene="res://scenes/user_interface/user_interface.tscn"
+run/main_scene="res://scenes/game/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
