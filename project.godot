@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="Clicker_2"
+run/main_scene="res://scenes/prototypes/generator/prototype_generator.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow",
+"res://scenes/": "teal",
+"res://scripts/": "pink"
+}
 
 [rendering]
 
