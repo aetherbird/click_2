@@ -16,13 +16,14 @@ button = NodePath("Button")
 timer = NodePath("Timer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+texture_repeat = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0580523, 4.6738e-05, 0.109383, 1)
+color = Color(0.00224487, 1.35368e-08, 0.0731909, 1)
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(320, 80)
